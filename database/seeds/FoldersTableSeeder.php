@@ -14,9 +14,11 @@ class FoldersTableSeeder extends Seeder
     public function run()
     {
         $titles = ["旅行", "プライベート", "仕事"];
+        $user = DB::table('users')->first();
         foreach ($titles as $title) {
             DB::table('folders')->insert([
                 'title' => $title,
+                'user_id' => $user->id,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ]);
